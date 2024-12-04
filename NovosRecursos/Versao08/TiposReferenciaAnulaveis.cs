@@ -1,4 +1,4 @@
-﻿namespace NovosRecursos.Versao8
+﻿namespace FeaturesCSharp.Versao8
 {
     #nullable enable // Habilitando tipos de referência anuláveis
     public class TiposReferenciaAnulaveis

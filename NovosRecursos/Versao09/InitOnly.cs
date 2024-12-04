@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NovosRecursos.Versao9
+namespace FeaturesCSharp.Versao9
 {
     public class InitOnly
     {
@@ -22,7 +22,7 @@ namespace NovosRecursos.Versao9
             };
 
             // Tentativa de alterar depois de inicializar causa erro
-            pedido.NumeroPedido = 1111; // Erro de compilação            
+            //pedido.NumeroPedido = 1111; // Erro de compilação            
 
         }
     }

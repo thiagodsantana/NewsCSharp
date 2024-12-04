@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace NovosRecursos.Versao8
+namespace FeaturesCSharp.Versao8
 {
     public class IndicesFaixas
     {

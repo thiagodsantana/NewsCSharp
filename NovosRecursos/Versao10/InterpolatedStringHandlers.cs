@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace NovosRecursos.Versao10
+namespace FeaturesCSharp.Versao10
 {
     public class InterpolatedStringHandlers
     {

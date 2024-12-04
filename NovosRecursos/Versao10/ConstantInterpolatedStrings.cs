@@ -1,4 +1,4 @@
-﻿namespace NovosRecursos.Versao10
+﻿namespace FeaturesCSharp.Versao10
 {
     internal class ConstantInterpolatedStrings
     {

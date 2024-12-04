@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 
-namespace NovosRecursos.Versao11
+namespace FeaturesCSharp.Versao11
 {
     public class RequiredMembers
     {
@@ -37,10 +37,13 @@ namespace NovosRecursos.Versao11
                 Numero = 1988
             };
 
-            var pedidoInvalido = new Pedido
-            {
-                Numero = 1999
-            };
+            /*
+             * Obrigatorio inicializar a propriedade Cliente
+             */
+            //var pedidoInvalido = new Pedido
+            //{
+            //    Numero = 1999
+            //};
         }
     }
 }

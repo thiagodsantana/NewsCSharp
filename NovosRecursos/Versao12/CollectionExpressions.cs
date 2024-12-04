@@ -1,4 +1,4 @@
-﻿namespace NovosRecursos.Versao12
+﻿namespace FeaturesCSharp.Versao12
 {
     internal class CollectionExpressions
     {

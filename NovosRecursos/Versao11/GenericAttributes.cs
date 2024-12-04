@@ -1,4 +1,4 @@
-﻿namespace NovosRecursos.Versao11
+﻿namespace FeaturesCSharp.Versao11
 {
     internal class GenericAttributes
     {

@@ -1,6 +1,6 @@
 ﻿using System.Reflection.PortableExecutable;
 
-namespace NovosRecursos.Versao8
+namespace FeaturesCSharp.Versao8
 {
     public class PatternMatchingAvancado
     {
