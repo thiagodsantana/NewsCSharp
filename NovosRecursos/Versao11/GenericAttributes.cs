@@ -4,7 +4,7 @@
     {
         /*
             * Interpretação pelo compilador: O compilador trata Generic Attributes como instâncias genéricas de classes que herdam de Attribute, 
-            *   gerando código IL e metadados que armazenam o tipo genérico e os argumentos.
+            gerando código IL e metadados que armazenam o tipo genérico e os argumentos.
 
             * Metadados: Os parâmetros genéricos são armazenados e podem ser acessados por reflexão em tempo de execução.
 
