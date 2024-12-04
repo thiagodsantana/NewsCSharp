@@ -18,7 +18,7 @@ namespace FeaturesCSharp.Versao9
         */
 
 
-        public Records()
+        public void Validar()
         {
             var pessoa = new Pessoa("João", 30);
 

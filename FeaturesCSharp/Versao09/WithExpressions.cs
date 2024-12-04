@@ -1,10 +1,6 @@
 ﻿namespace FeaturesCSharp.Versao9
 {
-    internal class WithExpressions
-    {
-        public record Pessoa(string Nome, int Idade);
-
-        /*
+    /*
          * Resumo: Oferecem uma maneira conveniente de criar uma nova instância de um objeto baseado em uma instância existente, 
                mas com algumas propriedades modificadas.
                 * Benefícios:      
@@ -12,8 +8,11 @@
                     * Código mais limpo: Simplifica a criação de objetos modificados sem a necessidade de chamar um construtor manualmente com valores repetidos.
                     * Facilidade de uso com records: Como os records já possuem imutabilidade e comparação baseada em valor, as with expressions funcionam perfeitamente para modificar objetos de maneira segura e eficaz.:    
         */
+    internal class WithExpressions
+    {
+        public record Pessoa(string Nome, int Idade);        
 
-        public WithExpressions()
+        public void Validar()
         {
             var pessoa = new Pessoa("João", 25);
 

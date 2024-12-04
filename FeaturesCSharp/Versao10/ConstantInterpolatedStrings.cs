@@ -1,24 +1,18 @@
-﻿namespace FeaturesCSharp.Versao10
+﻿using System.Drawing;
+
+namespace FeaturesCSharp.Versao10
 {
     internal class ConstantInterpolatedStrings
     {
         /*
-         * Resumo: 
-         
-         * Permitem que strings interpoladas sejam declaradas como const, desde que todos os componentes sejam constantes.
-         * O compilador resolve a interpolação em tempo de compilação.
-         * São úteis em:
-            * Inicialização de constantes;
-            * Atributos e switch case, simplificando cenários que antes exigiam concatenação manual.      
-            
-        * Como o compilador intepreta:
-            * Verifica se todos os elementos dentro da string interpolada são constantes;
-            * Valor final é calculado e armazenado como um literal diretamente no código compilado.
-            * O valor calculado é tratado como uma constante literal na saída do IL (Intermediate Language). 
-            * Não há chamadas de método ou lógica de interpolação em tempo de execução.                        
+         * Resumo: Permitem que strings interpoladas sejam declaradas como const, desde que todos os componentes sejam constantes.
+            * Benefícios:
+                *   O compilador resolve a interpolação em tempo de compilação.
+                *   Facilidade na inicialização de constantes;
+                *   Atributos e switch case, simplificando cenários que antes exigiam concatenação manual.                                                  
         */
 
-        public ConstantInterpolatedStrings()
+        public void Validar()
         {
             /*
              * Inicialização de constantes
@@ -66,6 +60,13 @@
                     break;
             }
 
+            /*
+             * Como o compilador intepreta:
+                - Verifica se todos os elementos dentro da string interpolada são constantes;
+                - Valor final é calculado e armazenado como um literal diretamente no código compilado.
+                - O valor calculado é tratado como uma constante literal na saída do IL(Intermediate Language).
+                - Não há chamadas de método ou lógica de interpolação em tempo de execução.
+             */
         }
     }
 }

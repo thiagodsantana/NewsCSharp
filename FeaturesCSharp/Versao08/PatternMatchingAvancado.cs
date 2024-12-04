@@ -56,10 +56,10 @@
             }
 
             // Código gerado pelo compilador:
-            if (pessoa is Pessoa pessoaMaiorIdade && pessoaMaiorIdade.Idade > 18)
-            {
-                Console.WriteLine($"{pessoaMaiorIdade.Nome} é maior de idade.");
-            }
+            //if (pessoa is Pessoa pessoaMaiorIdade && pessoaMaiorIdade.Idade > 18)
+            //{
+            //    Console.WriteLine($"{pessoaMaiorIdade.Nome} é maior de idade.");
+            //}
 
         }
     }
