@@ -1,16 +1,46 @@
-﻿namespace NovosRecursos.Versao11
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.X86;
+
+namespace NovosRecursos.Versao11
 {
-    internal class RequiredMembers
+    public class RequiredMembers
     {
-        public class Pessoa
+        public class Pedido
         {
-            public required string Nome { get; set; }
+            //[RequiredMemberAtribute]: Esse atributo sinaliza que a inicialização desses membros é obrigatória.
+
+            //Compilador interpreta required como:
+            //[RequiredMemberAttribute]
+            public required int Numero { get; init; }
+
+            //Compilador interpreta required como:
+            //[RequiredMemberAttribute]
+            public required string Cliente { get; init; }
+
+
+            //Se a classe possuir um construtor, o compilador adiciona o atributo SetsRequiredMembers a ele.
+            //Esse atributo indica que o construtor inicializa todos os membros obrigatórios, dispensando verificações adicionais.
+            //[SetsRequiredMembers]
+            public Pedido()
+            {
+                Numero = 0;
+                Cliente = string.Empty;
+            }
         }
 
-        public RequiredMembers()
+        public void Validar()
         {
-            var pessoa = new Pessoa { Nome = "João" };
-            Console.WriteLine(pessoa);
+            var pedidoValido = new Pedido 
+            {
+                Cliente = "Thiago Darlei",
+                Numero = 1988
+            };
+
+            var pedidoInvalido = new Pedido
+            {
+                Numero = 1999
+            };
         }
     }
 }
