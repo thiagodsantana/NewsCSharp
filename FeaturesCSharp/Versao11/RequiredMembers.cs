@@ -1,8 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
-
-namespace FeaturesCSharp.Versao11
+﻿namespace FeaturesCSharp.Versao11
 {
     public class RequiredMembers
     {
@@ -31,7 +27,7 @@ namespace FeaturesCSharp.Versao11
 
         public void Validar()
         {
-            var pedidoValido = new Pedido 
+            var pedidoValido = new Pedido
             {
                 Cliente = "Thiago Darlei",
                 Numero = 1988

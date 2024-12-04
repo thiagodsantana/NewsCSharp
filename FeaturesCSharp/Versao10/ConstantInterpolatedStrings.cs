@@ -37,11 +37,11 @@
 
             [System.Obsolete($"This method is deprecated by {Author} in version {Version}.")]
             void OldMethod()
-            { 
+            {
                 List<int> list = new();
                 list.Sum();
             }
-            
+
             /*
              * Uso de switch case
              */
