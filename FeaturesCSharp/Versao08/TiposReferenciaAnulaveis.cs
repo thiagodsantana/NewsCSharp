@@ -17,7 +17,7 @@
                     * Ativação dos Tipos de Referência Anuláveis
                         - csproj <Nullable>enable</Nullable>
                         - #nullable enable (dúvida)
-                    * Verificação de Nulos em Tempo de Compilação]
+                    * Verificação de Nulos em Tempo de Compilação
                     * Uso de ? para Indicar Tipos Anuláveis
                     * Operadores de Nullability
                         -  operador ?. e o operador ??, que podem ser usados para verificar ou substituir valores nulos de forma mais segura.

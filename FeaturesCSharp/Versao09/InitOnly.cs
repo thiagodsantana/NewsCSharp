@@ -13,7 +13,7 @@
         public class Produto
         {
             public string Nome { get; set; }  // Pode ser alterado a qualquer momento
-            //.set instance void Produto::set_Codigo(int32) { set }
+            //.set instance void Produto::set_Nome(int32) { set }
             public string Codigo { get; init; }  // Só pode ser atribuído na inicialização
             //.set instance void Produto::set_Codigo(int32) { init }
 

@@ -1,6 +1,4 @@
-﻿using System.Runtime.Intrinsics.X86;
-
-namespace FeaturesCSharp.Versao9
+﻿namespace FeaturesCSharp.Versao9
 {
     internal class Records
     {
@@ -21,7 +19,7 @@ namespace FeaturesCSharp.Versao9
         public void Validar()
         {
             var pessoa = new Pessoa("João", 30);
-
+            
             // Imutabilidade
             //pessoa.Nome = "Maria"; // Erro: 'Nome' é uma propriedade de somente leitura.
 

@@ -16,7 +16,7 @@
         {
             var pessoa = new Pessoa("João", 25);
 
-            // Criar uma cópia de 'pessoa1' com a idade alterada
+            // Criar uma cópia de 'pessoa' com a idade alterada
             var pessoaCopy = pessoa with { Idade = 30 };
 
             Console.WriteLine(pessoa);  // Saída: Pessoa { Nome = João, Idade = 25 }
@@ -38,13 +38,13 @@
             .newobj instance void Persona::.ctor(string, int32)  // Chama o construtor de Persona para pessoa1
 
             // Criando pessoa2 usando 'with'
-            ldarg.0                               // Load pessoa1
+            ldarg.0                               // Load pessoa
             ldstr "João"                           // Load string "João"
             ldc.i4 25                              // Load int32 25
-            newobj instance void Persona::.ctor(string, int32)  // Cria pessoa1
+            newobj instance void Persona::.ctor(string, int32)  // Cria pessoa
 
             // Modificando apenas o campo 'Idade' ao criar uma nova instância
-            ldarg.0                               // Load pessoa1
+            ldarg.0                               // Load pessoa
             ldc.i4 30                              // Load int32 30
             newobj instance void Persona::.ctor(string, int32)  // Cria uma nova instância com Idade = 30
 
