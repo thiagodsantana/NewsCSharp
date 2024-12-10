@@ -18,11 +18,29 @@
 
         public void Validar()
         {
-            var lista = new List<int> { 1, 2, 3, 3, 4, 5 };
-            var array = new[] { 1, 2, 3, 3, 4, 5};
+            List<int> lista = [ 1, 2, 3, 3, 4, 5 ];
+            int[] array = [ 1, 2, 3, 3, 4, 5];
+
             Adicionar(lista); // Verifica a compatibilidade do tipo (implementa interface IEnumerable<int>) e chama o método sem realizar conversões adicionais.
             Adicionar(array); // Verifica a compatibilidade do tipo e chama o método sem realizar conversões adicionais.
             Adicionar(1,2,3,4,5); // Interpreta isso como uma matriz implícita (int[]) e a encapsula como um array que implementa IEnumerable<int>.
+
+            /*
+            List<int> lista = new List<int>();
+            lista.Add(1);
+            lista.Add(2);
+            lista.Add(3);
+            lista.Add(3);
+            lista.Add(4);
+            lista.Add(5);
+
+            int[] array = new int[] { 1, 2, 3, 3, 4, 5 };
+
+            Adicionar(lista);           // Chamando Adicionar(List<int> lista)
+            Adicionar(array);           // Chamando Adicionar(int[] array)
+            Adicionar(new int[] { 1, 2, 3, 4, 5 }); // Chamando Adicionar(params int[] valores)
+
+             */
         }
     }
 }
