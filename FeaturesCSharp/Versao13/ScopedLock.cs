@@ -1,78 +1,94 @@
-﻿using Microsoft.VisualBasic;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Diagnostics;
+using System.Net.Http.Headers;
 
 namespace FeaturesCSharp.Versao13
 {
     /*
-     * Resumo: Oferece melhorias para sincronização de threads, usando o novo tipo System.Threading.Lock. 
-                Ele é projetado para substituir o tradicional uso de System.Threading.Monitor no contexto do bloqueio de objetos, 
-                    fornecendo uma abordagem mais robusta e eficiente.
+     * Resumo: É um recurso que visa simplificar e tornar mais segura a utilização de locks para proteger seções críticas de código 
+        em ambientes multi-threaded. Oferece uma sintaxe mais concisa e um tratamento mais elegante de exceções, comparado ao mecanismo 
+            tradicional de lock utilizando object como argumento..
         * Benefícios:
-            *   Segurança no Acesso Compartilhado: Garante que o bloqueio seja aplicado corretamente, reduzindo a chance de erros relacionados ao uso de objetos inadequados para bloqueio.
-            *   Melhoria de Performance: A nova API é mais eficiente em termos de desempenho e evita possíveis problemas de contenção de threads.
-            *   Mensagens de Diagnóstico do Compilador: O compilador emite avisos se Lock for utilizado incorretamente.
+            * Segurança: Garante que o lock seja sempre liberado, mesmo em caso de exceções, evitando deadlocks e inconsistências de dados.
+            * Concisão: A sintaxe using simplifica a aquisição e liberação do lock, tornando o código mais limpo e legível.
+            * Expressividade: A intenção de proteger uma seção crítica fica mais clara, melhorando a compreensão do código.
      */
-    internal class ScopedLock
+    public static class ScopedLock
     {
-        public int Valor => contador;
-        private int contador = 0;
-        private readonly Lock bloqueio = new();
+        static Stopwatch stopwatch = new Stopwatch();
+        public static int Valor => contador;
+        private static int contador = 0;
+        private static readonly Lock bloqueio = new();
+        private static readonly System.Object ObjectLock = new();
 
-        public void Validar()
+        static void SimularOperacaoLockObjGenerico(int taskId)
         {
-            //System.Threading.Lock
-            //Otimizado para gerenciamento de sincronização.
-            //O compilador reconhece o tipo Lock e utiliza APIs específicas para melhorar a eficiência,
-            //prevenindo erros de conversão ou uso inadequado de blocos de sincronização.
-            lock (bloqueio) // bloqueia a execução para garantir que apenas uma thread possa acessar o bloco de código associado por vez.
+            stopwatch.Start();
+            lock (ObjectLock) // O compilador emitiria instruções IL para usar System.Threading.Monitor.Enter e Monitor.Exit.
             {
+                Console.WriteLine($"Task {taskId} entrou no lock genérico.");
+                Task.Delay(500).Wait(); // A thread fica parada ocupando recursos e nenhuma outra tarefa pode avançar
                 contador++;
+                Console.WriteLine($"Task {taskId} incrementou o contador para {contador} usando lock genérico.");
             }
         }
 
-        public void Validar2()
+        static void SimularOperacaoNewLock(int taskId)
         {
-            System.Object objt = new();
-            lock (objt) // O compilador emitiria instruções IL para usar System.Threading.Monitor.Enter e Monitor.Exit.
+            if (bloqueio.TryEnter()) // Verifica se o lock está disponível sem bloquear a Thread 
             {
-                contador++;
+                try
+                {
+                    Console.WriteLine($"Task {taskId} entrou no new lock .");
+                    Thread.Sleep(500);
+                    IncrementarContador();
+                    Console.WriteLine($"Task {taskId} incrementou o contador para {contador} usando new lock.");
+                }
+                finally
+                {
+                    bloqueio.Exit(); //Garante que o lock seja liberado, independentemente de qualquer exceção que possa ocorrer dentro do bloco try
+                    Console.WriteLine($"Task {taskId} liberou o new lock.");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Task {taskId} executando outras ações.");
+                // Pode Executar operações paralelas sem esperar por recursos
             }
         }
 
-        /*
-         * Código gerado pelo compilador
-         .method public hidebysig specialname instance int32 get_Valor() cil managed
+        private static void IncrementarContador()
         {
-            ldarg.0
-            ldfld int32 <Namespace.ClassName>::contador
-            ret
+            contador++;
         }
 
-        .method public hidebysig instance void Incrementar() cil managed
+        public static async void ValidarLockGenerico()
         {
-            ldarg.0
-            ldfld class [mscorlib]System.Threading.Lock <Namespace.ClassName>::bloqueio
-            callvirt instance void [mscorlib]System.Threading.Lock::Enter()
-            .try
+            stopwatch.Start();
+            var tasksLockObjGenerico = new Task[5];
+            for (int i = 0; i < 5; i++)
             {
-                ldarg.0
-                dup
-                ldfld int32 <Namespace.ClassName>::contador
-                ldc.i4.1
-                add
-                stfld int32 <Namespace.ClassName>::contador
-                leave.s End
+                var taskId = i;
+                tasksLockObjGenerico[i] = Task.Run(() => SimularOperacaoLockObjGenerico(taskId));
             }
-            finally
-            {
-                ldarg.0
-                ldfld class [mscorlib]System.Threading.Lock <Namespace.ClassName>::bloqueio
-                callvirt instance void [mscorlib]System.Threading.Lock::Exit()
-            }
-        End:
-            ret
+            await Task.WhenAll(tasksLockObjGenerico);
+            stopwatch.Stop();
+            Console.Write($"Tempo passado Lock Genérico: {stopwatch.Elapsed}");
+            stopwatch.Restart();
         }
 
-         */
+        public static async void ValidarNewLock()
+        {
+            stopwatch.Start();
+            var taskNewLock = new Task[5];
+            for (int i = 0; i < 5; i++)
+            {
+                var taskId = i;
+                taskNewLock[i] = Task.Run(() => SimularOperacaoNewLock(taskId));
+            }
+            await Task.WhenAll(taskNewLock);
+            stopwatch.Stop();
+            Console.Write($"Tempo passado New Lock: {stopwatch.Elapsed}");
+            stopwatch.Restart();
+        }
     }
 }

@@ -1,9 +1,11 @@
 ﻿namespace FeaturesCSharp.Versao12
 {
-    internal class PrimaryConstructorsNonRecordTypes
+    public static class PrimaryConstructorsNonRecordTypes
     {
         /*
-      * Resumo:
+      * Resumo: Recurso que oferece uma sintaxe mais concisa e expressiva para inicializar objetos. 
+            Em vez de definir um método construtor tradicional, você declara um construtor primário diretamente na assinatura da classe, 
+            especificando os parâmetros e as propriedades que serão inicializadas.​
           Benefícios: 
              * Código Mais Limpo
              * Melhora a Legibilidade: Fica claro desde a definição do tipo quais valores são necessários para sua inicialização.
@@ -14,37 +16,43 @@
       */
 
         public record PedidoRecord(int NumeroPedido, DateTime DataPedido);
-        public class PedidoClassAnemica(int NumeroPedido, DateTime DataPedido);
+        public class PedidoPrimaryConstructor(int NumeroPedido, DateTime DataPedido);
 
-        public class PedidoClass(int numeroPedido, DateTime dataPedido)
+        public class PedidoPrimaryConstructorComPropertysAcesso(int numeroPedido, DateTime dataPedido)
         {
             // Definição propriedades de acesso são necessárias diferente do uso
             // de records e structs que as propiedades ja ficam acessíceis
             public int NumeroPedido { get; } = numeroPedido;
             public DateTime DataPedido { get; } = dataPedido;
 
-            public PedidoClass() : this(numeroPedido: 0, dataPedido: DateTime.Now)
+            public PedidoPrimaryConstructorComPropertysAcesso() : this(numeroPedido: 0, dataPedido: DateTime.Now)
             {
 
             }
 
             public override string ToString()
             {
-                return $"{NumeroPedido} - {DataPedido}";
+                return $"Número Pedido: {NumeroPedido} - Data: {DataPedido}";
             }
         }
 
-        public void Validar()
+        public static void Validar()
         {
-            var pedidoClassAnemica = new PedidoClassAnemica(100, DateTime.Now);
+            Console.WriteLine();
+            var pedidoPrimaryConstrutor = new PedidoPrimaryConstructor(100, DateTime.Now);
+            Console.WriteLine("Gerando Pedido com PrimaryConstructor => Propriedades não acessíveis");
+            Console.WriteLine(pedidoPrimaryConstrutor);
             //pedidoClassAnemica.DataPedido -> Não acessível
 
-            var pedidoClass = new PedidoClass(10, DateTime.Now);
-            Console.WriteLine($"Data do pedido {pedidoClass.DataPedido}");
-            var pedido = new PedidoClass();
+            Console.WriteLine();
+            var PedidoPrimaryConstructorComPropertysAcesso = new PedidoPrimaryConstructorComPropertysAcesso(10, DateTime.Now);
+            Console.WriteLine($"Gerando Pedido com PrimaryConstructor => Foi implementada propridades de acesso");
+            Console.WriteLine(PedidoPrimaryConstructorComPropertysAcesso.ToString());
 
+            Console.WriteLine();
             var pedidoRecord = new PedidoRecord(10, DateTime.Now);
-            Console.WriteLine(pedidoRecord.DataPedido.ToString());
+            Console.WriteLine("Gerando Pedido com Record => Todas as propriedades acessíveis");
+            Console.WriteLine(pedidoRecord.ToString());
         }
 
         /*

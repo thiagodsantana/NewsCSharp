@@ -8,7 +8,7 @@
             *   Menos boilerplate: Reduz a quantidade de código repetitivo, especialmente em arquivos no mesmo namespace.
             *   Estilo conciso: A sintaxe mais compacta melhora a manutenção do código, tornando o código-fonte mais direto.
  */
-public class MinhaClasse
+public class FileScopedNamespace
 {
     public void Metodo() { }
 }

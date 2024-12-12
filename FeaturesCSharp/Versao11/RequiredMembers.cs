@@ -35,11 +35,11 @@
             };
 
             // Incorreto:
-            var cachorroInvalido = new Cachorro
-            {
-                Especie = "Canina"
-                // Falta "Raca"
-            };
+            //var cachorroInvalido = new Cachorro
+            //{
+            //    Especie = "Canina"
+            //    // Falta "Raca"
+            //};
         }
 
         /*

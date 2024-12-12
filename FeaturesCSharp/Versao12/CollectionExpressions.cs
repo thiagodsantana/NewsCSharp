@@ -1,6 +1,6 @@
 ﻿namespace FeaturesCSharp.Versao12
 {
-    internal class CollectionExpressions
+    public static class CollectionExpressions
     {
         /*
          * Resumo: Recurso criado com o intuito de simplificar a criação e inicialização de coleções como listas, 
@@ -13,21 +13,34 @@
                     *   Compatibilidade: O tipo deve implementar ICollection<T> ou IReadOnlyCollection<T>
                     *   Limitações de Sintaxe: Ainda em preview
          */
-        public void Validar()
-        {            
+        public static void Validar()
+        {
             // Arrays (sem precisar de 'new')
+            Console.WriteLine();
             int[] numeros = [1, 2, 3, 4];
+            Console.WriteLine("Array - Collection Expression");
+            Console.WriteLine($"Variável declarada: int[] numeros = [1, 2, 3, 4];");
+            Console.WriteLine($"Interpretação do compilador var numeros2 = new int[] {{ 1, 2, 3, 4 }};");
+            Console.WriteLine("Iterando pelo array que foi declarado utilizando Collection Expression");
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                Console.WriteLine(numeros[i]);
+            }
             // Como o compilador interpreta:
             var numeros2 = new int[] { 1, 2, 3, 4 };
 
             // List
+            Console.WriteLine();
             List<int> listaCsharp11 = [10, 20, 30];
-            // Intepretação do compilador
-            List<int> lista = new List<int> { 10, 20, 30 };
-
-
-            //var dicionario = { "um": 1, "dois": 2};
-
+            Console.WriteLine("List - Collection Expression");
+            Console.WriteLine($"Variável declarada: List<int> listaCsharp11 = [10, 20, 30];");
+            Console.WriteLine($"Interpretação do compilador List<int> lista = new List<int> {{ 10, 20, 30 }};");
+            Console.WriteLine("Iterando pela list que foi declarado utilizando Collection Expression");
+            
+            foreach (int i in listaCsharp11)
+            {
+                Console.WriteLine(i);
+            }
         }
     }
 }
