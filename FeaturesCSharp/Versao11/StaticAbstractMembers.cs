@@ -11,7 +11,7 @@
                  * Facilidade em Criar Tipos Genéricos
                  * Maior Flexibilidade e Reusabilidade de Código
      */
-    internal class StaticAbstractMembers
+    public static class StaticAbstractMembers
     {
         public interface IRepository
         {

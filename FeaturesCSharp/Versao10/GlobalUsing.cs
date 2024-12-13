@@ -3,6 +3,12 @@
 global using System;
 global using System.Collections.Generic;
 global using System.Linq;
+global using FeaturesCSharp.Versao9;
+global using FeaturesCSharp.Versao10;
+global using FeaturesCSharp.Versao11;
+global using FeaturesCSharp.Versao12;
+global using FeaturesCSharp.Versao13;
+
 
 public class GlobalUsings
 {

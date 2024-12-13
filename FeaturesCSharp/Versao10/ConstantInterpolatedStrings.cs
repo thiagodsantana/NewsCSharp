@@ -1,8 +1,6 @@
-﻿using System.Drawing;
-
-namespace FeaturesCSharp.Versao10
+﻿namespace FeaturesCSharp.Versao10
 {
-    internal class ConstantInterpolatedStrings
+    public static class ConstantInterpolatedStrings
     {
         /*
          * Resumo: Permitem que strings interpoladas sejam declaradas como const, desde que todos os componentes sejam constantes.
@@ -12,34 +10,24 @@ namespace FeaturesCSharp.Versao10
                 *   Atributos e switch case, simplificando cenários que antes exigiam concatenação manual.                                                  
         */
 
-        public void Validar()
+        public static void Validar()
         {
             /*
              * Inicialização de constantes
              */
+            Console.WriteLine();
+            Console.WriteLine("Uso de Constant Interpolated Strings na inicialização");
             const string nome = "João";
             const string sobrenome = "Silva";
             const string nomeCompleto = $"{nome} {sobrenome}";
 
-            Console.WriteLine(nomeCompleto);  // Saída: João Silva
+            Console.WriteLine($"Nome completo formado por constantes: {nomeCompleto}");  // Saída: João Silva            
+        }
 
-            /*
-             * Definição de valores em atributos
-             */
-            const string Author = "Alice";
-            const string Version = "1.0";
-
-            [System.Obsolete($"This method is deprecated by {Author} in version {Version}.")]
-            void OldMethod()
-            {
-                List<int> list = new();
-                list.Sum();
-            }
-
-            /*
-             * Uso de switch case
-             */
-
+        public static void ValidarSwitchConstante()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Uso de Constant Interpolated Strings com switch");
             const string Saudacao = "Olá";
             const string Despedida = "Adeus";
             const string Nome = "Thiago";

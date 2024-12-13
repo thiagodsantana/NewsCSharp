@@ -12,7 +12,7 @@
             *   Potencial confusão em herança: Dificuldade para rastrear quais membros obrigatórios precisam ser inicializados em hierarquias complexas de herança.
             *   Uso excessivo: Se muitos membros forem marcados como required, pode complicar o uso da classe.
      */
-    public class RequiredMembers
+    public static class RequiredMembers
     {
         public class Animal
         {
@@ -21,15 +21,17 @@
 
         public class Cachorro : Animal
         {
+            public required string Nome { get; init; }
             public required string Raca { get; init; }
 
         }
 
-        public void Validar()
+        public static void Validar()
         {
             // Correto:
             var cachorro = new Cachorro
             {
+                Nome = "Rex",
                 Especie = "Canina",
                 Raca = "Labrador"
             };

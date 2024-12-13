@@ -1,6 +1,6 @@
 ﻿namespace FeaturesCSharp.Versao11
 {
-    internal class ListPatterns
+    public static class ListPatterns
     {
         /*
          Resumo: Funcionalidade que melhora a correspondência de padrões (pattern matching) em listas e arrays. 
@@ -13,33 +13,10 @@
                 * Mensagem de Erro em Tempo de Compilação: Se o tipo numeros não suportar as operações necessárias (como Length ou indexação), o compilador gera erros.
          */
 
-        void TestarPadrao(int[] numeros)
+        public static void Validar(int[] numeros)
         {
-            if (numeros is [_, _, 3])
-            {
-                /*
-                 * Significado da expressão:
-                    - O comprimento do array deve ser exatamente 3 elementos.
-                    - O terceiro elemento (índice 2) deve ser igual a 3.
-                    - Os dois primeiros elementos (numeros[0] e numeros[1]) podem ser qualquer valor (_ indica que são ignorados).
-
-                * O que o compilador faz:
-                    - Verifica se o tamanho do array é 3 (numeros.Length == 3).
-                    - Verifica se numeros[2] == 3.
-
-                Papel do _ :
-                    _ É um padrão curinga (wildcard). 
-                        Ele corresponde a qualquer valor e indica ao compilador que o valor não é relevante e será descartado.
-
-                if (numeros.Length == 3 && numeros[2] == 3)
-                {
-                    // O padrão foi correspondido
-                }
-
-                 */
-                Console.WriteLine("O array termina com 3.");
-            }
-            else if (numeros is [1, .., 3])
+            Console.WriteLine(numeros.ToString());
+            if (numeros is [1, .., 3])
             {
                 /*
                  * Significado da expressão:
@@ -68,6 +45,31 @@
                  */
                 Console.WriteLine("O array começa com 1 e termina com 3.");
             }
+            else
+            if (numeros is [_, _, 3])
+            {
+                /*
+                 * Significado da expressão:
+                    - O comprimento do array deve ser exatamente 3 elementos.
+                    - O terceiro elemento (índice 2) deve ser igual a 3.
+                    - Os dois primeiros elementos (numeros[0] e numeros[1]) podem ser qualquer valor (_ indica que são ignorados).
+
+                * O que o compilador faz:
+                    - Verifica se o tamanho do array é 3 (numeros.Length == 3).
+                    - Verifica se numeros[2] == 3.
+
+                Papel do _ :
+                    _ É um padrão curinga (wildcard). 
+                        Ele corresponde a qualquer valor e indica ao compilador que o valor não é relevante e será descartado.
+
+                if (numeros.Length == 3 && numeros[2] == 3)
+                {
+                    // O padrão foi correspondido
+                }
+
+                 */
+                Console.WriteLine("O array termina com 3.");
+            }                       
             else
             {
                 Console.WriteLine("Nenhum padrão correspondeu.");

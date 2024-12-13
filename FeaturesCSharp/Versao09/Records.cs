@@ -1,8 +1,14 @@
 ﻿namespace FeaturesCSharp.Versao9
 {
-    internal class Records
+    public static class Records
     {
-        public record Pessoa(string Nome, int Idade);
+        public class PessoaClass
+        {
+            public string? Nome { get; set; }
+            public int Idade { get; set; }
+        }
+
+        public record PessoaRecord(string Nome, int Idade);
 
         /*
          * Resumo: São um tipo especial de classe que facilita a criação de objetos com sintaxte simplificada que por sua vez trabalham com comparação pelos valores, 
@@ -15,56 +21,26 @@
                    * Comparação de igualdade: Classes comparam objetos pela referência (identidade), enquanto os records comparam objetos pelos valores de suas propriedades.                    
         */
 
+        // Como o compilador interpreta
+        //public class Pessoa
+        //{
+        //    public string Nome { get; init; }
+        //    public int Idade { get; init; }
 
-        public void Validar()
-        {
-            var pessoa = new Pessoa("João", 30);
-            
-            // Imutabilidade
-            //pessoa.Nome = "Maria"; // Erro: 'Nome' é uma propriedade de somente leitura.
+        //    public Pessoa(string nome, int idade)
+        //    {
+        //        Nome = nome;
+        //        Idade = idade;
+        //    }
 
-            // Como o compilador interpreta
-            //public class Pessoa
-            //{
-            //    public string Nome { get; init; }
-            //    public int Idade { get; init; }
+        //    public bool Equals(Pessoa pessoa) =>
+        //        pessoa is not null && Nome == pessoa.Name && Idade == pessoa.Age;
 
-            //    public Pessoa(string nome, int idade)
-            //    {
-            //        Nome = nome;
-            //        Idade = idade;
-            //    }
+        //    public override int GetHashCode() =>
+        //        HashCode.Combine(Nome, Idade);
 
-            //    public bool Equals(Pessoa pessoa) =>
-            //        pessoa is not null && Nome == pessoa.Name && Idade == pessoa.Age;
-
-            //    public override int GetHashCode() =>
-            //        HashCode.Combine(Nome, Idade);
-
-            //    public override string ToString() =>
-            //        $"Pessoa {{ Nome = {Nome}, Idade = {Idade} }}";
-            //}
-
-
-            //Comparação estrutural
-            var pessoa1 = new Pessoa("João", 30);
-            var pessoa2 = new Pessoa("João", 30);
-
-            Console.WriteLine(pessoa1 == pessoa2); // True
-
-            //Clonagem com o operador with
-            var pessoa3 = new Pessoa("João", 30);
-            var pessoa4 = pessoa1 with { Nome = "Maria" };
-
-            Console.WriteLine(pessoa4); // Pessoa { Nome = Maria, Idade = 30 }
-
-
-            //Desconstrução
-            var pessoa5 = new Pessoa("José", 20);
-            var (nome, idade) = pessoa5;
-
-            Console.WriteLine($"{nome}, {idade}"); // José, 20
-
-        }
+        //    public override string ToString() =>
+        //        $"Pessoa {{ Nome = {Nome}, Idade = {Idade} }}";
+        //}        
     }
 }
