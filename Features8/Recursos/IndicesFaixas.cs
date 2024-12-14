@@ -1,4 +1,4 @@
-﻿namespace FeaturesCSharp.Versao8
+﻿namespace Features8.Classes
 {
     /*
      * Resumo:
@@ -13,6 +13,6 @@
 
     public static class IndicesFaixas
     {
-        
+
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FeaturesCSharp.Versao8
+﻿namespace Features8.Classes
 {
     /*
      * Resumo: Ajudar a evitar erros de referência nula (NullReferenceException) e melhorar a segurança e a confiabilidade do código.
