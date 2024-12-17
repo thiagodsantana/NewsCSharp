@@ -10,8 +10,8 @@
      */
     public static class TiposReferenciaAnulaveis
     {
-        public static string nonNullableString = "Hello, World!";
-        public static string? nullableString = "Hello, Nullable!";
+        public static string VariavelNaoAnulavel = "Hello, World!";
+        public static string? VariavelAnulavel = "Hello, Nullable!";
 
         /*
              * Como o compilador interpreta

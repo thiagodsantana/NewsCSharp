@@ -10,52 +10,37 @@
     */
     public static class InitOnly
     {
-        public class Produto
+        public class Config
         {
-            public string? Nome { get; set; }  // Pode ser alterado a qualquer momento
-            //.set instance void Produto::set_Nome(int32) { set }
-            public string? Codigo { get; init; }  // Só pode ser atribuído na inicialização
-            //.set instance void Produto::set_Codigo(int32) { init }
-
+            public string ConnectionString { get; init; }
+            public int MaxConnections { get; init; }            
         }
 
-        /*
-         .class public auto ansi beforefieldinit Produto
-            extends [System.Private.CoreLib]System.Object
+        /* Código interpretado pelo compilador
+         *  O compilador trata as propriedades init de forma especial:
+                - Cria campos de suporte para armazenar os valores.
+                - Implementa um set accessor restrito que só funciona na inicialização do objeto.
+                - Impede modificações após a inicialização, promovendo imutabilidade.
+                - Faz verificações de tipo e nulidade em tempo de compilação, melhorando a segurança do código.
+
+         * 
+         public class Config
         {
-            .field public string Nome
-            .field public string Codigo
+            private string _connectionString;
+            private int _maxConnections;
 
-            // Construtor
-            .method public hidebysig specialname rtspecialname instance void .ctor() cil
+            public string ConnectionString
             {
-                // código do construtor
-                ldarg.0
-                call instance void [System.Private.CoreLib]System.Object::.ctor()
-                ret
+                get => _connectionString;
+                init => _connectionString = value;
             }
 
-            // Propriedade Nome - 'set'
-            .method public hidebysig instance void set_Nome(string value) cil
+            public int MaxConnections
             {
-                .maxstack 8
-                ldarg.0
-                ldarg.1
-                stfld string Produto::Nome
-                ret
-            }
-
-            // Propriedade Codigo - 'init'
-            .method public hidebysig instance void set_Codigo(string value) cil
-            {
-                .maxstack 8
-                ldarg.0
-                ldarg.1
-                stfld string Produto::Codigo
-                ret
+                get => _maxConnections;
+                init => _maxConnections = value;
             }
         }
-
-         */        
+         */
     }
 }

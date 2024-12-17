@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51A06F93-E779-4A8F-89DE-8CB4D39808E9}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		Novidades C#.pdf = Novidades C#.pdf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features08", "Features8\Features08.csproj", "{FA87FBF8-65D4-42D2-8BC8-E0F521B4935E}"

@@ -15,65 +15,52 @@
 
         public static void Validar(int[] numeros)
         {
-            Console.WriteLine(numeros.ToString());
+            // Exibindo o conteúdo do array
+            Console.WriteLine($"Array: {string.Join(", ", numeros)}");
+
+            // Com List Patterns
             if (numeros is [1, .., 3])
-            {
-                /*
-                 * Significado da expressão:
-                    - O array deve começar com o valor 1.
-                    - O array deve terminar com o valor 3.
-                    - O número de elementos entre o primeiro e o último (representado por ..) pode variar
-                      e esses elementos são ignorados.
-
-                * O que o compilador faz:
-                    - Verifica se o primeiro elemento é igual a 1 (numeros[0] == 1).
-                    - Verifica se o último elemento é igual a 3 (numeros[numeros.Length - 1] == 3).
-                    - Permite qualquer número de elementos entre o primeiro e o último.
-
-                    Verificações de comprimento = Array.Length ou propriedades similares para validar o tamanho do array.
-                    Verificações de índice: O acesso aos elementos do array, como numeros[2] ou numeros[0], é traduzido em instruções de carregamento e comparação.
-
-                Papelo do .. :
-                    O .. é expandido para lidar com o intervalo de elementos intermediários sem acessá-los explicitamente.
-                    Por exemplo, o segundo padrão ([1, .., 3]) pode ser traduzido conceitualmente para algo como:
-                    
-                    if (numeros.Length >= 2 && numeros[0] == 1 && numeros[numeros.Length - 1] == 3)
-                    {
-                        // Correspondência bem-sucedida
-                    }
-
-                 */
                 Console.WriteLine("O array começa com 1 e termina com 3.");
+
+            //Sem List Patterns
+            if (numeros.Length >= 2 && numeros[0] == 1 && numeros[^1] == 3)
+                Console.WriteLine("O array começa com 1 e termina com 3.");
+
+            // Com List Patterns
+            if (numeros is [])
+                Console.WriteLine("O array está vazio.");
+
+            //Sem List Patterns
+            if (numeros.Length == 0)
+                Console.WriteLine("O array está vazio.");
+
+            //Com List Patterns
+            if (numeros is [var primeiro, var segundo])
+                Console.WriteLine($"O array tem exatamente 2 elementos: {primeiro} e {segundo}.");
+
+            //Sem List Patterns
+            if (numeros.Length == 2)
+            {
+                int primeiroElemento = numeros[0];
+                int segundoElemento = numeros[1];
+                Console.WriteLine($"O array tem exatamente 2 elementos: {primeiroElemento} e {segundoElemento}.");
             }
-            else
+
+            //Com List Patterns
             if (numeros is [_, _, 3])
-            {
-                /*
-                 * Significado da expressão:
-                    - O comprimento do array deve ser exatamente 3 elementos.
-                    - O terceiro elemento (índice 2) deve ser igual a 3.
-                    - Os dois primeiros elementos (numeros[0] e numeros[1]) podem ser qualquer valor (_ indica que são ignorados).
+                Console.WriteLine("O array tem exatamente 3 elementos e o último é 3.");
 
-                * O que o compilador faz:
-                    - Verifica se o tamanho do array é 3 (numeros.Length == 3).
-                    - Verifica se numeros[2] == 3.
+            //Sem List Patterns
+            if (numeros.Length == 3 && numeros[numeros.Length - 1] == 3)
+                Console.WriteLine("O array tem exatamente 3 elementos e o último é 3.");
 
-                Papel do _ :
-                    _ É um padrão curinga (wildcard). 
-                        Ele corresponde a qualquer valor e indica ao compilador que o valor não é relevante e será descartado.
+            //Com List Patterns
+            if (numeros is [1, 2, 3])
+                Console.WriteLine("O array contém exatamente [1, 2, 3].");
 
-                if (numeros.Length == 3 && numeros[2] == 3)
-                {
-                    // O padrão foi correspondido
-                }
-
-                 */
-                Console.WriteLine("O array termina com 3.");
-            }                       
-            else
-            {
-                Console.WriteLine("Nenhum padrão correspondeu.");
-            }
+            //Sem List Patterns
+            if (numeros.Length == 3 && numeros[0] == 1 && numeros[1] == 2 && numeros[2] == 3)
+                Console.WriteLine("O array contém exatamente [1, 2, 3].");                        
         }
     }
 }

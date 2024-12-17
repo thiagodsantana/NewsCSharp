@@ -2,15 +2,6 @@
 
 #region Features C# 13
 
-#region ScopedLock
-
-Console.WriteLine("Scoped Lock - C# 13");
-ScopedLock.ValidarLockGenerico();
-ScopedLock.ValidarNewLock();
-#endregion
-
-Console.WriteLine();
-
 #region Params Collection
 Console.WriteLine("Params Collection - C# 13");
 ParamsCollections.ContarNumeros(1, 2, 3);
@@ -27,6 +18,17 @@ ParamsCollections.ContadorNumeros(hashSet);
 ParamsCollections.ContarNumeros(array);
 
 #endregion
+
+
+Console.WriteLine();
+
+#region ScopedLock
+Console.WriteLine();
+Console.WriteLine("Scoped Lock - C# 13");
+ScopedLock.ValidarLockGenerico();
+ScopedLock.ValidarNewLock();
+#endregion
+
 
 Console.ReadLine();
 #endregion

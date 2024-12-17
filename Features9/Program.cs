@@ -1,4 +1,5 @@
 ﻿using FeaturesCSharp.Versao9;
+using static FeaturesCSharp.Versao9.InitOnly;
 
 #region Features C# 9
 
@@ -6,14 +7,13 @@
 
 Console.WriteLine("InitOnly - C# 9");
 
-InitOnly.Produto produto = new()
+var config = new Config
 {
-    Codigo = "1009",
-    Nome = "Café"
+    ConnectionString = "Server=myServer;Database=myDB;",
+    MaxConnections = 10
 };
 
-produto.Nome = "Chá";  // Ok, pois 'Nome' tem 'set'
-//produto.Codigo = "B456";  // Erro de compilação, pois 'Codigo' tem 'init'            
+//config.ConnectionString = "Server=myServer;Database=newDB;";  // Erro de compilação, pois 'ConnectionString' está definida como 'init'
 
 #endregion
 
