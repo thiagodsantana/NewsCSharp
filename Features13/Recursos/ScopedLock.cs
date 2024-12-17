@@ -45,7 +45,7 @@ namespace FeaturesCSharp.Versao13
                 }
                 finally
                 {
-                    bloqueio.Exit(); //Garante que o lock seja liberado, independentemente de qualquer exceção que possa ocorrer dentro do bloco try
+                    bloqueio.Exit(); //Garante que o lock seja liberado, independentemente de qualquer exceção que possa ocorrer
                     Console.WriteLine($"Task {taskId} liberou o new lock.");
                 }
             }
@@ -71,6 +71,7 @@ namespace FeaturesCSharp.Versao13
                 tasksLockObjGenerico[i] = Task.Run(() => SimularOperacaoLockObjGenerico(taskId));
             }
             await Task.WhenAll(tasksLockObjGenerico);
+            Console.WriteLine($"Valor final do contador {contador}");
             stopwatch.Stop();
             Console.Write($"Tempo passado Lock Genérico: {stopwatch.Elapsed}");
             stopwatch.Restart();
@@ -86,6 +87,7 @@ namespace FeaturesCSharp.Versao13
                 taskNewLock[i] = Task.Run(() => SimularOperacaoNewLock(taskId));
             }
             await Task.WhenAll(taskNewLock);
+            Console.WriteLine($"Valor final do contador {contador}");
             stopwatch.Stop();
             Console.Write($"Tempo passado New Lock: {stopwatch.Elapsed}");
             stopwatch.Restart();

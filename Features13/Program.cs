@@ -25,7 +25,7 @@ Console.WriteLine();
 #region ScopedLock
 Console.WriteLine();
 Console.WriteLine("Scoped Lock - C# 13");
-ScopedLock.ValidarLockGenerico();
+//ScopedLock.ValidarLockGenerico();
 ScopedLock.ValidarNewLock();
 #endregion
 
