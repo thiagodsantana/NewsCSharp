@@ -20,12 +20,19 @@ Console.WriteLine();
 
 #region InlineArrays
 Console.WriteLine("Inline Arrays - C# 12");
+
+// Criando um array inline de structs (Pessoa)
+var pessoas = [new Pessoa("João", 30), new Pessoa("Maria", 25), new Pessoa("José", 35)];
 InlineArrayNumbers numbers = default;
 
 // Acessando os elementos
 numbers[0] = 10;
 numbers[1] = 20;
 numbers[2] = 30;
+
+;
+InlineArrayNumbers strings = default;
+strings[0] = "Teste";
 
 //Compilador informa que está fora do indíce
 //numbers[3] = 40;

@@ -22,7 +22,6 @@ Console.WriteLine();
 #region Record
 Console.WriteLine("Record - C# 9");
 Console.WriteLine();
-var pessoa = new Records.PessoaRecord("Thiago Darlei", 36);
 
 //Comparação estrutural
 var pessoa1 = new Records.PessoaRecord("Thiago Darlei", 36);
@@ -30,8 +29,8 @@ var pessoa2 = new Records.PessoaRecord("Thiago Darlei", 36);
 var pessoa3 = new Records.PessoaRecord("Thiago Darlei", 30);
 
 Console.WriteLine("Comparação Records:");
-Console.WriteLine($"{pessoa1} -> {pessoa2} | Resultado: {pessoa1 == pessoa2}");
-Console.WriteLine($"{pessoa1} -> {pessoa3} | Resultado {pessoa1 == pessoa3}");
+Console.WriteLine($"{pessoa1} -> {pessoa2} | Resultado: {pessoa1 == pessoa2}"); // True
+Console.WriteLine($"{pessoa1} -> {pessoa3} | Resultado {pessoa1 == pessoa3}"); // False
 
 
 Records.PessoaClass pessoaClass1 = new()
@@ -61,6 +60,8 @@ Console.WriteLine($"{pessoaClass1.Nome} {pessoaClass1.Idade} -> {pessoa3.Nome} {
 //Clonagem com o operador with
 var pessoa4 = new Records.PessoaRecord("João", 30);
 var pessoa5 = pessoa4 with { Nome = "Maria" };
+//var pessoa5 = new Records.PessoaRecord("Maria", pessoa4.Idade);
+
 
 Console.WriteLine();
 Console.WriteLine("Clonagem com o operador with:");

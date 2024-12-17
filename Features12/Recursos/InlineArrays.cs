@@ -19,7 +19,7 @@ namespace FeaturesCSharp.Versao12
         //[InlineArray(3)] // é usado para definir um array "in-line" dentro de uma estrutura. (Apenas struct)
         public struct InlineArrayNumbers
         {
-            private int _dummy; // (_dummy) representa o início do array e serve de base para os elementos subsequentes.
+            private int _inicio; // (_dummy) representa o início do array e serve de base para os elementos subsequentes.
         }
 
         /*

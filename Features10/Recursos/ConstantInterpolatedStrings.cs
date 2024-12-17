@@ -2,6 +2,10 @@
 {
     public static class ConstantInterpolatedStrings
     {
+        public const string VersaoAntiga = "1.0";
+        public const string VersaoNova = "2.0";
+        public const string Upgrade = $"{VersaoAntiga} => {VersaoNova}";
+
         /*
          * Resumo: Permitem que strings interpoladas sejam declaradas como const, desde que todos os componentes sejam constantes.
             * Benefícios:
@@ -22,6 +26,13 @@
             const string nomeCompleto = $"{nome} {sobrenome}";
 
             Console.WriteLine($"Nome completo formado por constantes: {nomeCompleto}");  // Saída: João Silva            
+            MetodoAntigo();
+        }
+
+        [Obsolete($"Método obsoleto. Efetuar o upgrade {Upgrade}")]
+        static void MetodoAntigo()
+        {
+            Console.WriteLine("Este método está obsoleto.");
         }
 
         public static void ValidarSwitchConstante()

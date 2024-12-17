@@ -54,20 +54,5 @@
             Console.WriteLine("Gerando Pedido com Record => Todas as propriedades acessíveis");
             Console.WriteLine(pedidoRecord.ToString());
         }
-
-        /*
-         * Código Gerado pelo compilador
-                 public class Pedido
-                 {
-                    public int NumeroPedido { get; }
-                    public DateTime DataPedido { get; }
-
-                    public Pedido(int numeroPedido, DateTime dataPedido)
-                    {
-                        NumeroPedido = numeroPedido;
-                        DataPedido = dataPedido;
-                    }
-                 }
-         */
     }
 }

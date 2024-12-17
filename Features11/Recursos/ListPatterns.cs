@@ -23,7 +23,7 @@
                 Console.WriteLine("O array começa com 1 e termina com 3.");
 
             //Sem List Patterns
-            if (numeros.Length >= 2 && numeros[0] == 1 && numeros[^1] == 3)
+            if (numeros.Length >= 2 && numeros[0] == 1 && numeros[numeros.Length - 1] == 3)
                 Console.WriteLine("O array começa com 1 e termina com 3.");
 
             // Com List Patterns

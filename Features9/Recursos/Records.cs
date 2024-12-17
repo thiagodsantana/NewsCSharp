@@ -2,13 +2,15 @@
 {
     public static class Records
     {
+        public record PessoaRecord(string Nome, int Idade);
+
         public class PessoaClass
         {
             public string? Nome { get; set; }
             public int Idade { get; set; }
         }
 
-        public record PessoaRecord(string Nome, int Idade);
+        
 
         /*
          * Resumo: São um tipo especial de classe que facilita a criação de objetos com sintaxte simplificada que por sua vez trabalham com comparação pelos valores, 

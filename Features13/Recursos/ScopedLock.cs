@@ -30,7 +30,7 @@ namespace FeaturesCSharp.Versao13
                 contador++;
                 Console.WriteLine($"Task {taskId} incrementou o contador para {contador} usando lock genérico.");
             }
-        }
+        }        
 
         static void SimularOperacaoNewLock(int taskId)
         {
@@ -85,6 +85,39 @@ namespace FeaturesCSharp.Versao13
             {
                 var taskId = i;
                 taskNewLock[i] = Task.Run(() => SimularOperacaoNewLock(taskId));
+            }
+            await Task.WhenAll(taskNewLock);
+            Console.WriteLine($"Valor final do contador {contador}");
+            stopwatch.Stop();
+            Console.Write($"Tempo passado New Lock: {stopwatch.Elapsed}");
+            stopwatch.Restart();
+        }
+
+        static void Teste(int taskId)
+        {
+            try
+            {
+                Console.WriteLine($"Task {taskId} entrou no new lock .");
+                Thread.Sleep(500);
+                IncrementarContador();
+                Console.WriteLine($"Task {taskId} incrementou o contador para {contador} usando new lock.");
+            }
+            finally
+            {
+                if (bloqueio.IsHeldByCurrentThread)
+                    bloqueio.Exit(); //Garante que o lock seja liberado, independentemente de qualquer exceção que possa ocorrer
+                Console.WriteLine($"Task {taskId} liberou o new lock.");
+            }
+        }
+
+        public static async void ValidarTeste()
+        {
+            stopwatch.Start();
+            var taskNewLock = new Task[5];
+            for (int i = 0; i < 5; i++)
+            {
+                var taskId = i;
+                taskNewLock[i] = Task.Run(() => Teste(taskId));
             }
             await Task.WhenAll(taskNewLock);
             Console.WriteLine($"Valor final do contador {contador}");

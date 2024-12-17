@@ -13,7 +13,13 @@
         public class Config
         {
             public string ConnectionString { get; init; }
-            public int MaxConnections { get; init; }            
+            public int MaxConnections { get; set; }
+
+            public void UpdateMaxConnections(int maxConnections) => MaxConnections = maxConnections;
+
+            // Não é possível
+            //public void UpdateConnectionString(int connectionsString) => ConnectionString = connectionsString;
+
         }
 
         /* Código interpretado pelo compilador
