@@ -26,7 +26,7 @@
             if (numeros.Length >= 2 && numeros[0] == 1 && numeros[numeros.Length - 1] == 3)
                 Console.WriteLine("O array começa com 1 e termina com 3.");
 
-            // Com List Patterns
+            // Com List Patterns [] = Verifica se está vazio e não nulo
             if (numeros is [])
                 Console.WriteLine("O array está vazio.");
 

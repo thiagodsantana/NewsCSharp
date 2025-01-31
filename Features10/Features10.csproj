@@ -10,5 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Features8\Features08.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<Using Include="NAMESPACE" />
+	</ItemGroup>
 
 </Project>

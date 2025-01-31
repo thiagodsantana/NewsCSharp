@@ -24,12 +24,13 @@ Console.WriteLine("Record - C# 9");
 Console.WriteLine();
 
 //Comparação estrutural
-var pessoa1 = new Records.PessoaRecord("Thiago Darlei", 36);
-var pessoa2 = new Records.PessoaRecord("Thiago Darlei", 36);
+var pessoa1 = new Records.PessoaRecord("Thiago Darlei", 36, [1,2]);
+var pessoa2 = new Records.PessoaRecord("Thiago Darlei", 36, [1,2]);
 var pessoa3 = new Records.PessoaRecord("Thiago Darlei", 30);
 
 Console.WriteLine("Comparação Records:");
 Console.WriteLine($"{pessoa1} -> {pessoa2} | Resultado: {pessoa1 == pessoa2}"); // True
+// Se o record possuir reference type a comparação por valores pode não funcionar pois n tem implementado o metódo GetHash e Equal
 Console.WriteLine($"{pessoa1} -> {pessoa3} | Resultado {pessoa1 == pessoa3}"); // False
 
 
@@ -71,11 +72,11 @@ Console.WriteLine($"Record clonado com alteração: {pessoa5}");
 
 //Desconstrução
 var pessoa6 = new Records.PessoaRecord("José", 20);
-var (nome, idade) = pessoa6;
+//var (nome, idade) = pessoa6;
 
 Console.WriteLine();
 Console.WriteLine("Resultado do Desconstrutor:");
-Console.WriteLine($"{nome} - {idade}"); // José, 20
+//Console.WriteLine($"{nome} - {idade}"); // José, 20
 
 #endregion
 

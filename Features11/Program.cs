@@ -15,12 +15,12 @@ Console.WriteLine();
 #region Required Member
 
 Console.WriteLine("Required Member - C# 11");
-var cachorro = new RequiredMembers.Cachorro
-{
-    Nome = "Rex",
-    Especie = "Canina",
-    Raca = "Labrador"
-};
+//var cachorro = new RequiredMembers.Cachorro
+//{
+//    Nome = "Rex",
+//    Especie = "Canina",
+//    Raca = "Labrador"
+//};
 
 
 //Propriedades Nome e Raca devem ser inicializada no construtor
@@ -28,7 +28,7 @@ var cachorro = new RequiredMembers.Cachorro
 //                       {
 //                           Especie = "Canina"
 //                       };
-Console.WriteLine($"Espécie: {cachorro.Especie} | Raça: {cachorro.Raca}");
+//Console.WriteLine($"Espécie: {cachorro.Especie} | Raça: {cachorro.Raca}");
 
 #endregion
 

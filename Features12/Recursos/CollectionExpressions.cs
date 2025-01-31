@@ -48,7 +48,7 @@
 
             /*
              * Interpretação do compilador
-                ( .. ) é usado para desempacotar os elementos da coleção dentro da nova lista.
+                ( .. ) é usado para obter os elementos da coleção dentro da nova lista.
                 List<int> lista1 = new List<int> { 1, 2 };
                 List<int> lista2 = new List<int> { 3, 4 };
                 List<int> listaFinal = new List<int>();
@@ -58,6 +58,8 @@
 
              */
 
+            // Melhorar Slide  CollectionExpressions
+            // Serve para criação de coleções mas não para maninulação
             List<int> lista = [1, 2, 3, 4, 5];
             List<int> novaLista = [.. lista[0..^2], 99]; // [1, 2, 3, 99]
             /*

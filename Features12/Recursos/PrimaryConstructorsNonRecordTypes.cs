@@ -48,10 +48,12 @@
             var PedidoPrimaryConstructorComPropertysAcesso = new PedidoPrimaryConstructorComPropertysAcesso(10, DateTime.Now);
             Console.WriteLine($"Gerando Pedido com PrimaryConstructor => Foi implementada propridades de acesso");
             Console.WriteLine(PedidoPrimaryConstructorComPropertysAcesso.ToString());
+            //PedidoPrimaryConstructorComPropertysAcesso.NumeroPedido
 
             Console.WriteLine();
             var pedidoRecord = new PedidoRecord(10, DateTime.Now);
             Console.WriteLine("Gerando Pedido com Record => Todas as propriedades acessíveis");
+            //pedidoRecord.DataPedido
             Console.WriteLine(pedidoRecord.ToString());
         }
     }

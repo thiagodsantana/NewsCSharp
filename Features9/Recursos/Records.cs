@@ -2,7 +2,7 @@
 {
     public static class Records
     {
-        public record PessoaRecord(string Nome, int Idade);
+        public record PessoaRecord(string Nome, int Idade, int[]? valores = null);
 
         public class PessoaClass
         {

@@ -17,12 +17,12 @@
             Console.WriteLine($"Quantidade de números {numeros.Count()}");
         }
 
-        public static void ContadorNumeros(params IEnumerable<int> numeros)
+        public static void ContadorNumeros(params Span<int> numeros)
         {
             Console.WriteLine();
-            Console.WriteLine($"Compilador verifica compatibilidade de Type: {numeros.GetType().Name} (implementa interface IEnumerable<int>)");
+            //Console.WriteLine($"Compilador verifica compatibilidade de Type: {numeros.GetType().Name} (implementa interface IEnumerable<int>)");
             Console.WriteLine("Executa o método sem realizar conversões adicionais");
-            Console.WriteLine($"Quantidade de números {numeros.Count()}");            
+            //Console.WriteLine($"Quantidade de números {numeros.Count()}");            
         }        
     }
 }

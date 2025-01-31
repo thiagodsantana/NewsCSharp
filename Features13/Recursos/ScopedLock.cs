@@ -11,6 +11,8 @@ namespace FeaturesCSharp.Versao13
             * Segurança: Garante que o lock seja sempre liberado, mesmo em caso de exceções, evitando deadlocks e inconsistências de dados.
             * Concisão: A sintaxe using simplifica a aquisição e liberação do lock, tornando o código mais limpo e legível.
             * Expressividade: A intenção de proteger uma seção crítica fica mais clara, melhorando a compreensão do código.
+            * 
+            * Validar teste de performance
      */
     public static class ScopedLock
     {

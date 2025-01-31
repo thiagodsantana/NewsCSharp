@@ -1,5 +1,4 @@
 ﻿using Features8.Classes;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 #region Features C# 8
@@ -16,11 +15,11 @@ Console.WriteLine("Index e Ranges - C# 8");
 
 Console.WriteLine();
 Console.WriteLine("Recurso Index");
-int[] array = { 1, 2, 3, 4, 5, 6 };
+int[] array = [1, 2, 3, 4, 5, 6];
 Console.WriteLine("int[] array = { 1, 2, 3, 4, 5, 6 }");
 
 int ultimo = array[^1];
-ultimo = array[new Index(1, fromEnd: true)];
+ultimo = array[new Index(1, fromEnd: false)];
 ImprimirIndex("Último Registro ( array[^1] )", array, ultimo);
 Console.WriteLine("Interpretação compilador: array[array.Length - 1]");
 
@@ -42,8 +41,11 @@ ImprimirRange("Retorna todos os elementos usando Range.All ", array, Range.All);
 //array.ToList<int>().Slice(0, array.Length);
 
 Console.WriteLine();
-ImprimirRange("Retorna os últimos 3 elementos usando expressão ..3 ", array, range: ..3);
+ImprimirRange("Retorna os últimos 3 elementos usando expressão ..3 ", array, range: ..^3);
 ImprimirRange("Retorna os últimos 3 elementos usando Range.EndAt(3) ", array, Range.EndAt(3));
+
+
+// Sintaxte .. (Apenas valores constantes)
 //// Conversão da Expressão:
 //array.ToList<int>().Slice(0, 4);
 
@@ -97,7 +99,8 @@ Console.WriteLine();
 Console.WriteLine("Property Patterns");
 
 PatternMatching.Pessoa pessoa = new("João", 30);
-if (pessoa is PatternMatching.Pessoa { Idade: > 18 } pessoaMaiorIdade)
+Object testePessoa = pessoa;
+if (testePessoa is PatternMatching.Pessoa { Idade: > 18 } pessoaMaiorIdade)
 {
     Console.WriteLine(pessoa);
     Console.WriteLine($"{pessoaMaiorIdade.Nome} é maior de idade.");
@@ -156,11 +159,8 @@ Console.WriteLine();
 Console.WriteLine("Operadores de Pattern Matching");
 switch (pessoa)
 {
-    case PatternMatching.Pessoa p when (p.Idade >= 18):
+    case { Idade: >= 18 } p : 
         Console.WriteLine($"{p.Nome} é maior de idade.");
-        break;
-    case PatternMatching.Pessoa p when (p.Idade < 18):
-        Console.WriteLine($"{p.Nome} é menor de idade.");
         break;
     default:
         break;
@@ -222,16 +222,16 @@ Console.WriteLine("TiposReferenciaAnulaveis.VariavelAnulavel!.Length -> NullRefe
 //Console.WriteLine(TiposReferenciaAnulaveis.VariavelAnulavel!.Length); 
 
 string? nome = null; // Valor inicial é nulo.
-ValidarNomeNotNull(nome); // O método garante que 'nome' não será mais nulo.
-Console.WriteLine(nome); // Saída: "Nome Padrão"
+ValidarNomeNotNull(ref nome); // O método garante que 'nome' não será mais nulo.
+Console.WriteLine(nome.Length); // Saída: "Nome Padrão"
 
 nome = "Thiago";
-ValidarNomeMaybeNull(nome);
+ValidarNomeMaybeNull(ref nome);
 
 /*
  * O atributo [NotNull] informa ao compilador e ferramentas de análise que, após o método, nome não será mais nulo.
  */
-static void ValidarNomeNotNull([NotNull] string? nome)
+static void ValidarNomeNotNull([NotNull] ref string? nome)
 {
     if (string.IsNullOrEmpty(nome))
     {
@@ -242,7 +242,7 @@ static void ValidarNomeNotNull([NotNull] string? nome)
 /*
  * O atributo [MaybeNull] informa ao compilador e ferramentas de análise que, após o método, nome não será mais nulo.
  */
-static void ValidarNomeMaybeNull([MaybeNull] string? nome)
+static void ValidarNomeMaybeNull([MaybeNull] ref string? nome)
 {
     if (string.IsNullOrEmpty(nome))
     {

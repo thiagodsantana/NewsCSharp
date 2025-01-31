@@ -24,12 +24,20 @@
             public required string Nome { get; init; }
             public required string Raca { get; init; }
 
+            public Cachorro(string nome)
+            {
+                Nome = nome;
+            }
+
         }
+
+
 
         public static void Validar()
         {
+            
             // Correto:
-            var cachorro = new Cachorro
+            var cachorro = new Cachorro("")
             {
                 Nome = "Rex",
                 Especie = "Canina",

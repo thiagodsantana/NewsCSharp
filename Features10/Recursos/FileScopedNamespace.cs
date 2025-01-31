@@ -17,5 +17,7 @@ public class FileScopedNamespace
  * Como o compilador interpreta:
     * A principal mudança para o compilador é a simplificação do processo de parsing do arquivo. 
       Embora o impacto na performance do compilador seja mínimo, a mudança faz com que o código seja mais fácil de analisar e 
-      entender, sem afetar a compatibilidade com versões anteriores.
+      entender, sem afetar a compatibilidade com versões anteriores. (Tempo de Build => Mas tema irrelevante)
+    
+    Trívia
  */

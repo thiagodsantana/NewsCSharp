@@ -10,8 +10,9 @@ List<int> lista = [1, 2, 3, 4];
 var enumerable = Enumerable.Range(5, 5);
 var hashSet = (new HashSet<int> { 5, 6, 7, 8, 9, 10 });
 int[] array = [1, 2, 3, 4, 5, 6, 7];
+Span<int> span = [1, 2, 3];
 
-
+ParamsCollections.ContadorNumeros(span);
 ParamsCollections.ContadorNumeros(lista);
 ParamsCollections.ContadorNumeros(enumerable);
 ParamsCollections.ContadorNumeros(hashSet);

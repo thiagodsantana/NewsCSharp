@@ -4,6 +4,7 @@ global using System;
 global using System.Collections.Generic;
 global using System.Linq;
 global using FeaturesCSharp.Versao10;
+using System.Net.NetworkInformation;
 
 public class GlobalUsings
 {
@@ -22,6 +23,11 @@ public class GlobalUsings
         -  Código IL Gerado: Não possui diferenças com relação ao uso explícito de using. 
             Os global using são apenas uma abstração para simplificar o código-fonte.     
      */
+
+
+  //  <ItemGroup>
+		//<Using Include = "NAMESPACE" />
+  //  </ ItemGroup >
 
     public void Validar()
     {
