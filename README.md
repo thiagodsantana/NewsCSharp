@@ -157,9 +157,3 @@ Este projeto está sob a licença **MIT** — livre para uso, estudo e modifica�
 **Autor:** [Thiago D. Santana](https://github.com/thiagodsantana)  
 **LinkedIn:** [linkedin.com/in/thiagodsantana](https://linkedin.com/in/thiagodsantana)  
 **E-mail:** [thiago.darley@gmail.com](mailto:thiago.darley@gmail.com)
-````
-
----
-
-Quer que eu gere também a **versão com imagens de badges otimizadas (SVGs hospedadas localmente)** para não depender do Shields.io (como falhou no outro)?
-Isso garante renderização 100% estável mesmo offline.
